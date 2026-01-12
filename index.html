@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Bangers&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+    <div class="theme-toggle-container">
+        <button id="theme-switch" class="theme-switch" aria-label="Toggle Theme">
+            <div class="switch-ball">
+                <i class="fa-solid fa-moon moon-icon"></i>
+                <i class="fa-solid fa-sun sun-icon"></i>
+            </div>
+            <div class="switch-aura"></div>
+        </button>
+    </div>
+
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="goku.mp4" type="video/mp4">
+    </video>
+    <canvas id="bg-canvas"></canvas>
+
+    <header class="hero">
+        <div class="container hero-container">
+            <div class="profile-column">
+                <div class="profile-container">
+                    <img src="Mubin.jpeg" alt="K. M. Fathum Mubin Sachcha" class="profile-pic">
+                </div>
+            </div>
+            
+            <div class="hero-info">
+                <h1 class="name">K. M. Fathum Mubin Sachcha</h1>
+                <p class="role">Creative Developer & Designer</p>
+                
+                <div class="avg-rating-container" id="avg-rating-container">
+                    <div class="star-rating-display" aria-label="Average Rating">
+                        <div class="stars-bg">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div class="stars-fill" id="stars-fill" style="width: 0%">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="bio">Curious, tech-driven, and constantly evolving—an editor and software engineer with a sharp eye for detail and a drive to build, learn, and grow beyond limits.</p>
+
+                <div class="social-links hero-social">
+                    <a href="https://github.com/mubin25s" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="mailto:fathummubin26@gmail.com" aria-label="Gmail"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/fathum-mubin-090937280?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://discord.com/users/mubin.26" target="_blank" aria-label="Discord: mubin.26" title="mubin.26"><i class="fa-brands fa-discord"></i></a>
+                    <a href="https://x.com/FathumMubin26" target="_blank" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://www.facebook.com/share/14RTXWtMn8Y/" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/fathum.mubin.26?igsh=MTR3Y2hheGpvdnNrcg==" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://wa.me/8801302910017" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+                
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary">Contact Me</a>
+                    <a href="#showcase" class="btn btn-secondary">View Work</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="showcase" class="section">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="carousel-3d-container">
+                <div class="carousel-3d-track" id="project-track">
+                    <div class="carousel-3d">
+                        <article class="project-card">
+                            <div class="card-content">
+                                <h3>Banking System</h3>
+                                <p>A secure console-based application for managing bank accounts and transactions.</p>
+                                <div class="tags">
+                                    <span>C Programming</span>
+                                    <span>Data Structure</span>
+                                    <span>File Handling</span>
+                                </div>
+                                <div class="card-links">
+                                    <a href="https://github.com/mubin25s/Banking-System" target="_blank">GitHub</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="project-card">
+                            <div class="card-content">
+                                <h3>Pet Shelter</h3>
+                                <p>A web application for managing pet adoptions and shelter inventory.</p>
+                                <div class="tags">
+                                    <span>PHP</span>
+                                    <span>HTML</span>
+                                    <span>CSS</span>
+                                    <span>JavaScript</span>
+                                    <span>Supabase</span>
+                                </div>
+                                <div class="card-links">
+                                    <a href="https://mfathumsachcha-netizen.github.io/petshelter-Demo/" target="_blank">View Demo</a>
+                                    <a href="https://github.com/mubin25s/Pet_Shelter" target="_blank">GitHub</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="project-card">
+                            <div class="card-content">
+                                <h3>Pet Shop</h3>
+                                <p>A full-featured MERN stack application for pet sales featuring real-time chat.</p>
+                                <div class="tags">
+                                    <span>MongoDB</span>
+                                    <span>Express.js</span>
+                                    <span>React</span>
+                                    <span>Node.js</span>
+                                </div>
+                                <div class="card-links">
+                                    <a href="https://mfathumsachcha-netizen.github.io/petshop-Demo/" target="_blank">View Demo</a>
+                                    <a href="https://github.com/mubin25s/Pet_Shop-3" target="_blank">GitHub</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="project-card">
+                            <div class="card-content">
+                                <h3>Portfolio</h3>
+                                <p>A personal portfolio website with dark theme and interactive animations.</p>
+                                <div class="tags">
+                                    <span>HTML</span>
+                                    <span>CSS</span>
+                                    <span>JavaScript</span>
+                                    <span>Supabase</span>
+                                    <span>Glassmorphism</span>
+                                </div>
+                                <div class="card-links">
+                                    <a href="projects/portfolio.html" target="_blank">View Demo</a>
+                                    <a href="https://github.com/mubin25s/Portfolio" target="_blank">GitHub</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="project-card">
+                            <div class="card-content">
+                                <h3>Library Management</h3>
+                                <p>A web-based system for managing library resources and members.</p>
+                                <div class="tags">
+                                    <span>HTML</span>
+                                    <span>CSS</span>
+                                    <span>JavaScript</span>
+                                    <span>PHP</span>
+                                    <span>MySQL</span>
+                                    <span>XAMPP</span>
+                                </div>
+                                <div class="card-links">
+                                    <a href="https://mfathumsachcha-netizen.github.io/library_management-Demo/" target="_blank">View Demo</a>
+                                    <a href="https://github.com/mubin25s/Library_Management" target="_blank">GitHub</a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                
+
+            </div>
+        </div>
+    </section>
+
+    <section id="interests" class="section alt-bg">
+        <div class="container">
+            <h2 class="section-title">Interests & Skills</h2>
+            <div class="interests-container shadow-border">
+                <ul class="interests-list">
+                    <li>Programming Fundamentals</li>
+                    <li>Problem-Solving</li>
+                    <li>Web Development</li>
+                    <li>Frontend & UI/UX Awareness</li>
+                    <li>Backend & Database Basics</li>
+                    <li>Open Source</li>
+                    <li>Project Structuring</li>
+                    <li>Editing & Clarity</li>
+                    <li>Fast Learner, Tech-Curious</li>
+                    <li>Photography</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="languages" class="section">
+        <div class="container">
+            <h2 class="section-title">Programming Languages</h2>
+            <div class="interests-container shadow-border" style="padding: 1.5rem 2rem; max-width: 800px; margin: 0 auto;">
+                <ul class="interests-list" style="margin-bottom: 1.2rem;">
+                    <li>JavaScript</li>
+                    <li>Python</li>
+                    <li>Java</li>
+                    <li>C++</li>
+                    <li>C#</li>
+                    <li>Dart</li>
+                </ul>
+                <ul class="interests-list">
+                    <li>PHP</li>
+                    <li>MySQL</li>
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>C</li>
+                    <li>Shell</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Have a project in mind? Let's talk.</p>
+            
+            <form id="contact-form" class="contact-form">
+                <div class="inputs-grid">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="proportialduck@gmail.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="4" required placeholder="Project details..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="reviews" class="section alt-bg">
+        <div class="container">
+            <h2 class="section-title">Leave a Review</h2>
+            <p class="section-subtitle">Your feedback matters! Rate your experience.</p>
+            
+            <form id="rating-form" class="contact-form">
+                <div class="inputs-grid">
+                    <div class="form-group">
+                        <label for="rating-name">Name</label>
+                        <input type="text" id="rating-name" name="name" required placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="rating-email">Email</label>
+                        <input type="email" id="rating-email" name="email" required placeholder="your@email.com">
+                    </div>
+                </div>
+
+                <div class="form-group rating-group">
+                    <label>Rate Your Experience</label>
+                    <div class="star-rating" id="star-rating">
+                        <i class="fa-regular fa-star" data-rating="1"></i>
+                        <i class="fa-regular fa-star" data-rating="2"></i>
+                        <i class="fa-regular fa-star" data-rating="3"></i>
+                        <i class="fa-regular fa-star" data-rating="4"></i>
+                        <i class="fa-regular fa-star" data-rating="5"></i>
+                    </div>
+                    <input type="hidden" id="rating" name="rating" value="0">
+                </div>
+
+                <div class="form-group">
+                    <label for="review">Review (Optional)</label>
+                    <textarea id="review" name="review" rows="2" placeholder="Share your thoughts about my work..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Review</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 K. M. Fathum Mubin Sachcha. All rights reserved.</p>
+
+        </div>
+    </footer>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
