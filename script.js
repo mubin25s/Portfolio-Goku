@@ -3,16 +3,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     const isLowPowerDevice = window.innerWidth < 768; // Simple proxy
 
-    // Particle Trail Cursor - Only create if not touch
-    let cursorMain, cursorGlow;
-    if (!isTouchDevice) {
-        cursorMain = document.createElement('div');
-        cursorGlow = document.createElement('div');
-        cursorMain.classList.add('cursor-main');
-        cursorGlow.classList.add('cursor-glow');
-        document.body.appendChild(cursorMain);
-        document.body.appendChild(cursorGlow);
-    }
+    // Custom Cursor Elements - Always create and let CSS handle visibility
+    let cursorMain = document.createElement('div');
+    let cursorGlow = document.createElement('div');
+    cursorMain.classList.add('cursor-main');
+    cursorGlow.classList.add('cursor-glow');
+    document.body.appendChild(cursorMain);
+    document.body.appendChild(cursorGlow);
 
     let mouseX = 0, mouseY = 0;
     let glowX = 0, glowY = 0;
@@ -44,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mouseX = e.clientX;
         mouseY = e.clientY;
         
-        if (!isTouchDevice && cursorMain) {
+        if (cursorMain) {
             // Main cursor follows immediately
             cursorMain.style.left = mouseX + 'px';
             cursorMain.style.top = mouseY + 'px';
@@ -80,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Smooth glow animation
     function animateGlow() {
-        if (!isTouchDevice && cursorGlow) {
+        if (cursorGlow) {
             // Lerp for smooth trailing glow
             glowX += (mouseX - glowX) * 0.1;
             glowY += (mouseY - glowY) * 0.1;
