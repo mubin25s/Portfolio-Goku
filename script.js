@@ -112,8 +112,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Initialize Supabase
-    const SUPABASE_URL = 'https://yrqfglueiungguldisym.supabase.co';
-    const SUPABASE_ANON_KEY = 'sb_publishable_Q7r3Pd9GMh3_-kF8XyILZg_A8ZtJTul';
+    const SUPABASE_URL = 'https://mxkpcgmujyzuljspslqr.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_HxpoNXfpVP9GuiAD6y9-tA_OrnrkTXH';
     const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
     // 1. Animated Gradient Mesh Background

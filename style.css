@@ -1,10 +1,33 @@
 /* Global Styles */
 /* Global Styles & Theme Variables */
 :root {
-    /* Dark Mode (Default) - Video Focused */
+    /* DEFAULT MODE: Arctic Stealth (Static Photo Background) */
+    --bg-color: #141b24;
+    --card-bg: rgba(255, 255, 255, 0.05); /* ULTRA-LIGHT TYPE - Ghost Glass */
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --text-primary: #ffffff;
+    --text-secondary: #00e5ff;
+    --accent-color: #00f2ff;
+    --accent-secondary: #ffffff;
+    --accent-glow: rgba(0, 242, 255, 0.5);
+    --ki-glow: rgba(255, 255, 255, 0.3);
+    --switch-bg: rgba(255, 255, 255, 0.15);
+    --body-bg-gradient: radial-gradient(circle at center, rgba(0, 242, 255, 0.08), rgba(10, 14, 20, 0.95));
+    --overlay-gradient: radial-gradient(circle at center, rgba(20, 27, 36, 0.2), rgba(10, 14, 20, 0.7));
+    --video-display: none;
+    --image-bg-display: block;
+    --bio-text: #a3e9ff; /* Light Aqua for Photo Mode */
+    --bio-hover: #ffffff;
+    --font-family: 'Orbitron', sans-serif;
+    --cursor-size: 8px;
+    --follower-size: 40px;
+}
+
+[data-theme="light"] {
+    /* TOGGLE MODE: Ultimate Instinct (Video Background) */
     --bg-color: #0a0e14;
-    --card-bg: rgba(10, 20, 30, 0.4);
-    --glass-border: rgba(0, 242, 255, 0.2);
+    --card-bg: rgba(0, 0, 0, 0.08); /* ULTRA-DARK TYPE - Ghost Glass */
+    --glass-border: rgba(0, 242, 255, 0.12);
     --text-primary: #ffffff;
     --text-secondary: #a3e9ff;
     --accent-color: #00e5ff;
@@ -13,28 +36,11 @@
     --ki-glow: rgba(224, 250, 255, 0.5);
     --switch-bg: rgba(255, 255, 255, 0.05);
     --body-bg-gradient: linear-gradient(rgba(10, 14, 20, 0.45), rgba(10, 14, 20, 0.6));
+    --overlay-gradient: linear-gradient(rgba(10, 14, 20, 0.45), rgba(10, 14, 20, 0.6));
     --video-display: block;
     --image-bg-display: none;
-    --font-family: 'Orbitron', sans-serif;
-    --cursor-size: 8px;
-    --follower-size: 40px;
-}
-
-[data-theme="light"] {
-    /* Light Mode - Static Image Focused */
-    --bg-color: #f7fafc;
-    --card-bg: rgba(255, 255, 255, 0.85);
-    --glass-border: rgba(0, 112, 243, 0.2);
-    --text-primary: #1a202c;
-    --text-secondary: #4a5568;
-    --accent-color: #0070f3;
-    --accent-secondary: #00cfde;
-    --accent-glow: rgba(0, 112, 243, 0.2);
-    --ki-glow: rgba(0, 112, 243, 0.1);
-    --switch-bg: rgba(0, 0, 0, 0.08);
-    --body-bg-gradient: linear-gradient(rgba(247, 250, 252, 0.9), rgba(247, 250, 252, 0.9));
-    --video-display: none;
-    --image-bg-display: block;
+    --bio-text: rgb(0, 229, 255); /* Aqua for Video Mode */
+    --bio-hover: #ffffff;
 }
 
 * {
@@ -47,11 +53,6 @@
 /* Custom Cursor - Particle Trail */
 body {
     background-color: var(--bg-color);
-    background-image: var(--body-bg-gradient), url('ui_goku_bg.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
     color: var(--text-primary);
     transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s ease;
     cursor: none !important;
@@ -108,8 +109,8 @@ body {
 
 [data-theme="light"] .switch-ball {
     transform: translateX(34px);
-    background: #FFD700;
-    box-shadow: 0 0 20px #FFD700;
+    background: var(--accent-color);
+    box-shadow: 0 0 20px var(--accent-glow);
 }
 
 [data-theme="light"] .sun-icon { opacity: 1; transform: scale(1) rotate(0); }
@@ -242,7 +243,7 @@ body {
     position: relative;
 }
 
-#bg-video {
+.bg-asset {
     position: fixed;
     top: 0;
     left: 0;
@@ -250,8 +251,18 @@ body {
     height: 100%;
     z-index: -3;
     object-fit: cover;
+    object-position: center;
+    pointer-events: none;
     filter: brightness(0.9) contrast(1.1);
-    display: var(--video-display); /* Toggles off in Light Mode */
+    transition: opacity 0.5s ease;
+}
+
+#bg-video {
+    display: var(--video-display);
+}
+
+#bg-image {
+    display: var(--image-bg-display);
 }
 
 body::after {
@@ -261,8 +272,7 @@ body::after {
     left: 0;
     width: 100%;
     height: 100%;
-    /* Lightened from 0.7 to 0.45 for better video visibility */
-    background: linear-gradient(rgba(10, 14, 20, 0.45), rgba(10, 14, 20, 0.6));
+    background: var(--overlay-gradient);
     z-index: -2;
     pointer-events: none;
 }
@@ -626,7 +636,7 @@ h1, h2, h3 {
 .bio {
     font-family: 'Inter', sans-serif;
     font-size: 1.1rem;
-    color: var(--text-secondary);
+    color: var(--bio-text);
     max-width: 550px;
     margin: 1.5rem 0;
     padding: 0;
@@ -641,7 +651,7 @@ h1, h2, h3 {
 }
 
 .bio:hover {
-    color: #fff;
+    color: var(--bio-hover);
     transform: translateX(5px);
 }
 
@@ -740,8 +750,8 @@ h1, h2, h3 {
     border: 1px solid var(--glass-border);
     border-radius: 20px;
     padding: 2rem;
-    backdrop-filter: blur(8px); /* Reduced blur to sharpen text layers */
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(4px); /* Lowered blur for better background visibility */
+    -webkit-backdrop-filter: blur(4px);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
@@ -910,38 +920,45 @@ h1, h2, h3 {
 }
 
 .interests-container {
-    padding: 4rem;
+    width: 95%;
+    max-width: 1000px; /* Increased to fit more tags */
+    margin: 0 auto;
+    background: var(--card-bg);
+    padding: 3rem 2rem; /* Balanced padding */
     border: 1px solid var(--glass-border);
     border-radius: 20px;
-    background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.005) 100%);
-    backdrop-filter: blur(15px);
-    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    position: relative;
     transform-style: preserve-3d;
     transition: transform 0.3s ease;
 }
 
 .interests-container:hover {
     transform: translateY(-5px);
-    border-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-color);
 }
 
 .interests-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 1rem;
+    position: relative;
+    z-index: 2;
 }
 
 .interests-list li {
-    background: rgba(255, 255, 255, 0.03);
-    padding: 14px 30px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px 22px; /* Denser tags for better fit */
     border-radius: 50px;
-    color: var(--text-secondary);
+    color: var(--text-primary); /* Use white for high visibility */
     border: 1px solid var(--glass-border);
-    font-size: 1rem;
+    font-size: 0.95rem;
     transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     position: relative;
-    overflow: hidden;
+    font-weight: 500;
 }
 
 .interests-list li:hover {
@@ -964,7 +981,8 @@ h1, h2, h3 {
     border: 1px solid var(--glass-border);
     border-radius: 20px;
     padding: 2rem;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     transition: all 0.3s ease;
 }
 
@@ -1030,25 +1048,17 @@ h1, h2, h3 {
     margin: 0 auto;
     background: var(--card-bg);
     padding: 3rem;
-    border-radius: 25px;
+    border-radius: 20px;
     border: 1px solid var(--glass-border);
-    backdrop-filter: blur(20px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
     position: relative;
     overflow: hidden;
 }
 
-.contact-form::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 40%);
-    animation: rotate 20s linear infinite;
-    z-index: 0;
-    pointer-events: none;
+.contact-form:hover {
+    border-color: var(--accent-color);
 }
 
 @keyframes rotate {
