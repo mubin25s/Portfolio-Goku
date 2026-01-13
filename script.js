@@ -13,15 +13,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const particleInterval = 30; // milliseconds between particles
 
     // 0. Theme Toggle Logic (Cosmic Shift)
-    const themeSwitch = document.getElementById('theme-switch');
+    const profilePic = document.querySelector('.profile-pic');
     const currentTheme = localStorage.getItem('theme') || 'dark';
 
     if (currentTheme === 'light') {
         document.documentElement.setAttribute('data-theme', 'light');
     }
 
-    if (themeSwitch) {
-        themeSwitch.addEventListener('click', () => {
+    if (profilePic) {
+        profilePic.style.cursor = 'pointer'; // Ensure it looks clickable
+        profilePic.addEventListener('click', () => {
             let theme = document.documentElement.getAttribute('data-theme');
             if (theme === 'light') {
                 document.documentElement.setAttribute('data-theme', 'dark');

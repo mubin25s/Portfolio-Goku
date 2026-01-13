@@ -62,78 +62,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Unique Theme Switch Button */
-.theme-toggle-container {
-    position: fixed;
-    top: 30px;
-    right: 30px;
-    z-index: 99999;
-}
-
-.theme-switch {
-    width: 70px;
-    height: 36px;
-    border-radius: 50px;
-    background: var(--switch-bg);
-    border: 1px solid var(--glass-border);
-    position: relative;
-    padding: 4px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    backdrop-filter: blur(10px);
-    overflow: visible;
-}
-
-.switch-ball {
-    width: 26px;
-    height: 26px;
-    background: var(--text-primary);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    position: relative;
-    z-index: 2;
-    box-shadow: 0 0 15px var(--accent-glow);
-}
-
-.switch-ball i {
-    font-size: 14px;
-    color: var(--bg-color);
-    position: absolute;
-    transition: all 0.4s ease;
-}
-
-.sun-icon { opacity: 0; transform: scale(0) rotate(-90deg); }
-.moon-icon { opacity: 1; transform: scale(1) rotate(0); }
-
-[data-theme="light"] .switch-ball {
-    transform: translateX(34px);
-    background: var(--accent-color);
-    box-shadow: 0 0 20px var(--accent-glow);
-}
-
-[data-theme="light"] .sun-icon { opacity: 1; transform: scale(1) rotate(0); }
-[data-theme="light"] .moon-icon { opacity: 0; transform: scale(0) rotate(90deg); }
-
-.switch-aura {
-    position: absolute;
-    inset: 0;
-    border-radius: 50px;
-    background: var(--accent-color);
-    opacity: 0.1;
-    filter: blur(10px);
-    transition: all 0.4s ease;
-}
-
-.theme-switch:hover .switch-aura {
-    opacity: 0.3;
-    filter: blur(15px);
-}
-
-.theme-switch:active {
-    transform: scale(0.9);
-}
 
 
 
@@ -525,6 +453,7 @@ h1, h2, h3 {
     transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s;
     filter: brightness(1.2) contrast(1.1);
     animation: auraPulse 2s infinite alternate;
+    cursor: pointer !important; /* Mode Switcher */
 }
 
 @keyframes auraPulse {
