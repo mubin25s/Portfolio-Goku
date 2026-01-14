@@ -14,8 +14,8 @@
     --switch-bg: rgba(255, 255, 255, 0.15);
     --body-bg-gradient: radial-gradient(circle at center, rgba(0, 242, 255, 0.08), rgba(10, 14, 20, 0.95));
     --overlay-gradient: radial-gradient(circle at center, rgba(20, 27, 36, 0.2), rgba(10, 14, 20, 0.7));
-    --video-display: block;
-    --image-bg-display: none;
+    --video-display: none;
+    --image-bg-display: block;
     --bio-text: rgb(0, 229, 255); /* Aqua for Video Mode */
     --bio-hover: #ffffff;
     --font-family: 'Orbitron', sans-serif;
@@ -37,8 +37,8 @@
     --switch-bg: rgba(255, 255, 255, 0.05);
     --body-bg-gradient: linear-gradient(rgba(10, 14, 20, 0.45), rgba(10, 14, 20, 0.6));
     --overlay-gradient: linear-gradient(rgba(10, 14, 20, 0.45), rgba(10, 14, 20, 0.6));
-    --video-display: none;
-    --image-bg-display: block;
+    --video-display: block;
+    --image-bg-display: none;
     --bio-text: #a3e9ff; /* Light Aqua for Photo Mode */
     --bio-hover: #ffffff;
 }
@@ -621,7 +621,7 @@ h1, h2, h3 {
     scrollbar-width: none;
     -ms-overflow-style: none;
     -webkit-overflow-scrolling: touch;
-    touch-action: pan-x;
+    touch-action: pan-y;
     /* Fixed Mask: doesn't scroll with content */
     mask-image: linear-gradient(to right, 
         transparent 0%, 

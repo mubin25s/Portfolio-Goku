@@ -18,9 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 0. Theme Toggle Logic (Cosmic Shift)
     const profilePic = document.querySelector('.profile-pic');
-    const currentTheme = localStorage.getItem('theme') || 'dark';
+    const currentTheme = localStorage.getItem('theme') || 'light';
 
-    if (currentTheme === 'light') {
+    if (currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
         document.documentElement.setAttribute('data-theme', 'light');
     }
 
@@ -401,12 +403,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Interaction Listeners (Touch)
+        let startY;
         marqueeContainer.addEventListener('touchstart', (e) => {
             isDown = true;
             isHovered = true;
             startX = e.touches[0].pageX - marqueeContainer.offsetLeft;
+            startY = e.touches[0].pageY;
             scrollLeftBase = marqueeContainer.scrollLeft;
-        });
+        }, { passive: true });
 
         marqueeContainer.addEventListener('touchend', () => {
             isDown = false;
@@ -415,20 +419,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
         marqueeContainer.addEventListener('touchmove', (e) => {
             if (!isDown) return;
-            const x = e.touches[0].pageX - marqueeContainer.offsetLeft;
-            const walk = (x - startX) * 1.5;
-            marqueeContainer.scrollLeft = scrollLeftBase - walk;
             
-            if (marqueeContainer.scrollLeft >= firstGroup.offsetWidth) {
-                marqueeContainer.scrollLeft = 0;
-                startX = e.touches[0].pageX - marqueeContainer.offsetLeft;
-                scrollLeftBase = 0;
-            } else if (marqueeContainer.scrollLeft <= 0) {
-                marqueeContainer.scrollLeft = firstGroup.offsetWidth;
-                startX = e.touches[0].pageX - marqueeContainer.offsetLeft;
-                scrollLeftBase = firstGroup.offsetWidth;
+            const x = e.touches[0].pageX - marqueeContainer.offsetLeft;
+            const y = e.touches[0].pageY;
+            const dx = Math.abs(e.touches[0].pageX - (startX + marqueeContainer.offsetLeft));
+            const dy = Math.abs(y - startY);
+
+            // If swiping horizontally, prevent page scroll and move carousel
+            if (dx > dy) {
+                if (e.cancelable) e.preventDefault();
+                const walk = (x - startX) * 1.5;
+                marqueeContainer.scrollLeft = scrollLeftBase - walk;
+                
+                if (marqueeContainer.scrollLeft >= firstGroup.offsetWidth) {
+                    marqueeContainer.scrollLeft = 0;
+                    startX = e.touches[0].pageX - marqueeContainer.offsetLeft;
+                    scrollLeftBase = 0;
+                } else if (marqueeContainer.scrollLeft <= 0) {
+                    marqueeContainer.scrollLeft = firstGroup.offsetWidth;
+                    startX = e.touches[0].pageX - marqueeContainer.offsetLeft;
+                    scrollLeftBase = firstGroup.offsetWidth;
+                }
+            } else {
+                // If moving vertically, stop the carousel swiping to let the page scroll
+                isDown = false;
             }
-        });
+        }, { passive: false });
     }
 
     // Dragon Fire Function
